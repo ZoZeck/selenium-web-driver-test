@@ -10,18 +10,23 @@ class Script():
     def money(self):
         self.driver.get('https://cs.money')
         try:
-            time.sleep(5)
+            time.sleep(2)
             third = self.driver.find_element('xpath','/html/body/div[1]/div/div[1]/div[3]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div[2]/div/div[8]/div/div/div[2]/button')
             self.driver.execute_script("arguments[0].click();", third)  # Нажать на third, click() не работает
             time.sleep(10)
-            elems = self.driver.find_elements('xpath',
-                                              '/html/body/div[3]/div/div[3]/div/div/div[2]/div[1]/div/div/div[1]/div/div[4]/div/a/a')
+            elems = self.driver.find_elements('xpath','/html/body/div[3]/div/div[3]/div/div/div[2]/div[1]/div/div/div[1]/div/div[4]/div/a/a')
             for elem in elems:
                 print(elem.get_attribute("href"))
                 link = elem.get_attribute("href")
         except:
-            time.sleep(5)
+            time.sleep(2)
             third = self.driver.find_element('xpath','/html/body/div[1]/div/div[1]/div[3]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div[2]/div/div[8]/div/div/div[2]/button')
+            self.driver.execute_script("arguments[0].click();", third)  # Нажать на third, click() не работает
+            time.sleep(10)
+            elems = self.driver.find_elements('xpath','/html/body/div[3]/div/div[3]/div/div/div[2]/div[1]/div/div/div[1]/div/div[4]/div/a/a')
+            for elem in elems:
+                print(elem.get_attribute("href"))
+                link = elem.get_attribute("href")
         finally:
             self.steam(link)
 
@@ -48,7 +53,7 @@ def main():
 
     watcher = Script(driver)
     watcher.money()
-    # watcher.steam()
+    time.sleep(5)
 
 if __name__ == "__main__":
     main()
