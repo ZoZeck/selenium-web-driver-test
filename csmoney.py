@@ -35,7 +35,8 @@ class Script:
         while True:
             try:
                 steam_href = self.driver.find_elements(By.XPATH,
-                                                 '//*[@id="modal"]/div/div[3]/div/div/div[2]/div[1]/div/div/div[1]/div/div[4]/div/a/a')
+                                                       '//*[@id="modal"]/div/div[3]/div/div'
+                                                       '/div[2]/div[1]/div/div/div[1]/div/div[4]/div/a/a')
                 for trade_link in steam_href:
                     trade_link = trade_link.get_attribute("href")
                     print(f'\nYour trade link - {trade_link}')
