@@ -19,7 +19,7 @@ class Script:
                 ready_item = items_list.find_elements(By.CLASS_NAME, 'actioncard_wrapper__3jY0N')
                 for item in ready_item:
                     item_info = item.text.split()
-                    if item_info[0] == 'Вывод':
+                    if item_info[0] == 'Withdraw' or 'Вывод':
                         item_name = item_info[2]
                         withdraw_button = item.find_element(By.XPATH, '//*[@class="actioncard_buttons__1Bf3u"]/button')
             except KeyboardInterrupt:
@@ -62,7 +62,7 @@ class Script:
                 error_mes = self.driver.find_element(By.XPATH, '//*[@id="notready_tradechanged_message"]')
                 self.driver.execute_script("arguments[0].click();", final_confirm)
                 try:
-                    if error_mes.text == 'Предложение изменилось.':
+                    if error_mes.text == 'Предложение изменилось.' or 'Offer changed.':
                         while True:
                             try:
                                 time.sleep(2)
@@ -80,7 +80,7 @@ class Script:
             except:
                 print("\nOops! Try again...")
             finally:
-                print(f'\nFinish! Item [{item_name}] in your inventory :3\n')
+                print(f'\nFinish! Item [{item_name}] added to your inventory :3\n')
                 break
 
 
