@@ -54,12 +54,10 @@ class Script:
             try:
                 confirm_trade = self.driver.find_element(By.XPATH, '//*[@id="you_notready"]')
                 self.driver.execute_script("arguments[0].click();", confirm_trade)
-                # time.sleep(2)
                 self.driver.find_element(By.XPATH, '//*[@class="btn_green_steamui btn_medium"]').click()
                 scroll_down = self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 time.sleep(2)
                 final_confirm = self.driver.find_element(By.XPATH, '//*[@id="trade_confirmbtn"]')
-                # ↓ Uncomment next string to finish trade offer
                 error_mes = self.driver.find_element(By.XPATH, '//*[@id="notready_tradechanged_message"]')
                 self.driver.execute_script("arguments[0].click();", final_confirm)
                 try:
